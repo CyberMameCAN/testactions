@@ -1,0 +1,21 @@
+name: ftp upload
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  FTP-Deploy-Action
+  runs-on: ubuntu-latest
+  steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+
+    - uses: action/checkout@main
+    - uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      env:
+        FTP_SERVER: ${{ secrets.FTP_SERVER }} # githubのsettingから追加していく
+        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        LOCAL_DIR: /home/toshiya/Work/Practice/testactions
+        REMOTE_DIR: /XXXXXX/XXX
+        ARGS: --delete
