@@ -7,7 +7,11 @@ jobs:
   build:
     name: Check the contents of the file
     runs-on: ubuntu-latest
-    steps:
+    steps: # 以下実行するタスクを記述
       - uses: actions/checkout@v2
-      - run: echo "Hello World."
-      - run: cat sample.txt
+      #- run: echo "Hello World."
+      #- run: cat sample.txt
+      - name: execute echo commands
+        run: |
+          echo "Hello World!"
+          echo "Hello GitHub!" 
